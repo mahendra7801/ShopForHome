@@ -1,0 +1,19 @@
+<mat-toolbar color="md-primary" *ngIf="isLoggedIn()">
+
+  <span style="font-weight: light; font-family:times new roman;padding:50px ; font-size: 40px;  color:rgb(0, 60, 102);">
+    <i style="font-size: 30px;" class="fas fa-solid fa-store"> </i>  Shop For Home
+  </span>
+  
+  <div class="container">
+    <a class="flex-icon-4 f1" style="text-align: right; color:rgb(0,70,102);" *ngIf="userService.roleMatch(['Admin'])" routerLink="/admin" mat-button>
+      Dash Board
+    </a>
+  </div>
+
+  <div class="container">
+    <a *ngIf=" isLoggedIn()" style="text-align: right;" (click)="logout()" mat-button color="warn">
+      Logout <i class="fa fa-sign-out" style="font-size: 20px;" aria-hidden="true"></i>
+    </a>
+  </div>
+
+</mat-toolbar>

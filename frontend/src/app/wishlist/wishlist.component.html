@@ -1,0 +1,82 @@
+<mat-toolbar color="md-primary" class="custom-navbar navbar navbar navbar-expand-md">
+    <div class="collapse navbar-collapse">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/user" >
+                    <i style="font-size:20px; color:rgb(0,75,102);" class="fas fa-solid fa-store" aria-hidden="true"></i>
+                    <!-- <p style="color: black; ">Shop</p> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/wishlist" >
+                    <i style="font-size:20px; color:rgb(0,75,102);" class="fa fa-heart" aria-hidden="true"></i>
+                    <!-- <p style="color: black; ">WishList</p> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/cart">
+                    <i style="font-size: 20px; color:rgb(0,75,102);" class="fas fa-cart-plus"></i>
+                    <!-- <p style="color: black;">Cart</p> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/orderPage">
+                    <i style="font-size: 20px; color:rgb(0,75,102);" class="fa fa-briefcase" aria-hidden="true"></i>
+                    <!-- <p style="color: black;">My Orders</p> -->
+                </a>
+            </li>
+            
+
+        </ul>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+    <div class="container-1" style="font-family: 'Times New Roman', Times, serif;font-size: 50px;">Your Wish List
+    </div>
+    <div class="row">
+        <div ng-controller="AppCtrl as appCtrl" ng-cloak *ngFor="let wish of wishlistData"
+            class="col-12 col-md-4 col-lg-4 mb-3 mt-2">
+            <div>
+                <mat-card>
+
+                    <img mat-card-image src="/assets/images/{{wish.product.productImageLink}}">
+
+                    <mat-card-header>
+                        <mat-card-title class="mat-card-title"><strong
+                                style="font-family: 'Times New Roman', Times, serif;">{{wish.product.productName}}</strong>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="card-text-content">
+                            <h3>Offer Price: <strong>₹ {{wish.product.productDiscountedPrice}}</strong></h3>
+                            Original Price<h3 style="text-decoration:line-through; color: red;">₹
+                                {{wish.product.productActualPrice}}</h3>
+                        </div>
+                    </mat-card-content>
+
+                    <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+                        <button mat-raised-button color="warn" (click)="deleteWishlistProduct(wish.id)">Remove</button>
+                        <button mat-raised-button style="background-color:rgb(0,70,102); color:white "
+                                        (click)="addtocart(wish.product)">Add To
+                                        Cart</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-container *ngIf="wishlistData.length == 0">
+    <div class="contaiiner">
+        <div class="card">
+            <h2 class="card-title">My Wishlist</h2>
+        </div>
+        <div class="center">
+            <h3>Your Wishlist is Empty</h3>
+            <h4>Add items to your Wishlist</h4>
+            <button routerLink="/user" mat-raised-button class="btn btn-primary" style="background-color: rgb(0,70,102);">Shop Now</button>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,25 @@
+mat-toolbar {
+    background-color: transparent;
+}
+.container {
+    position: right;
+    text-align: right;
+    float: right;
+}
+
+.f1 {
+    margin-left: 1000px;
+}
+
+.flex-icon-3 {
+    margin-right: 00px;
+}
+
+f2 {
+    margin-right: 0px;
+}
+
+.flex-icon-4 {
+    margin-right: 300%;
+}
+

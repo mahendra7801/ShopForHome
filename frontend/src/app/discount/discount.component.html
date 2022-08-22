@@ -1,0 +1,140 @@
+<div class="container mt-5 pd-5">
+    <h3 style="font-family: 'Times New Roman', Times, serif;"><strong>Add Discount Coupons Here</strong></h3>
+    <form #discountform="ngForm" (ngSubmit)="addCoupon(discountform)">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Coupon Code</mat-label>
+            <input matInput placeholder="Enter your Coupon Code  " ngModel name="discountCoupon" required="required">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Discount Amount</mat-label>
+            <input type="number" matInput placeholder="Enter your Amount  " ngModel name="discountAmount"
+                required="required">
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="text-align: center; background-color:rgb(0,70,102)">Add Coupon</button>
+    </form>
+</div>
+
+<div class="container" style="padding-top: 10px;">
+    <div class="container pd-5 mt-2">
+        <h2 style="font-family: 'Times New Roman', Times, serif;">List Of Coupons</h2>
+    </div>
+    <div class="container pd-5 mt-5 ">
+        <table class="table table-hover w-100" border="2px solid">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Coupon Id
+                    </th>
+                    <th scope="col">
+                        Coupon Code
+                    </th>
+                    <th scope="col">
+                        Coupon Discount Amount
+                    </th>
+                    <th>
+                        Options
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row" border="2px" *ngFor="let item of discounts">
+
+                    <td>{{item.discountId}}</td>
+                    <td>{{item.discountCoupon}}</td>
+                    <td>{{item.discountAmount}}</td>
+
+                    <td><button class="button pd-3" mat-raised-button color="warn"
+                            (click)="deleteCoupon(item.discountId)">Delete</button>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container pd-5 mt-2">
+    <h2 style="font-family: 'Times New Roman', Times, serif;">List Of Users</h2>
+</div>
+<div class="container pd-5 mt-5 ">
+    <table class="table table-hover w-100" border="2px solid">
+        <thead>
+            <tr>
+                <th scope="col">
+                    First Name
+                </th>
+                <th scope="col">
+                    Last Name
+                </th>
+                <th scope="col">
+                    Email Id
+                </th>
+                <th scope="col">
+                    Phone Number
+                </th>
+                <th scope="col">
+                    Role
+                </th>
+                <th scope="col">
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" border="2px" *ngFor="let user of userDetails">
+
+                <td>{{user.userFirstName}}</td>
+                <td>{{user.userLastName}}</td>
+                <td>{{user.emailId}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.role[0].roleName}}</td>
+                <td>
+                    <form #discountselect="ngForm" (ngSubmit)="giveDiscount(discountselect,user)">
+                        <select ngModel name="discountCoupon" id="discountCoupon">
+                            <option *ngFor="let item of discounts" value={{item.discountAmount}}>{{item.discountCoupon}}
+                            </option>
+                        </select>
+                <td><button type="submit" class="button pd-3" mat-raised-button style="background-color: rgb(0,70,102); color:white;">Give
+                        Discount</button>&nbsp;</td>
+                </form>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container pd-5 mt-5 ">
+    <h2 style="font-family: 'Times New Roman', Times, serif;">List of Users Having Discounts</h2>
+    <table class="table table-hover w-100" border="2px solid">
+        <thead>
+            <tr>
+                <th scope="col">
+                    User Name
+                </th>
+
+                <th scope="col">
+                    Email Id
+                </th>
+                <th>
+                    Discount Amount
+                </th>
+                <th scope="col">
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" border="2px" *ngFor="let user of userCoupons">
+
+                <td>{{user.user.userName}}</td>
+
+                <td>{{user.user.emailId}}</td>
+
+                <td>{{user.discountAmount}}</td>
+                <td>
+                    <button mat-raised-button color="warn" (click)="removeDiscount(user.id)">Remove Discount</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

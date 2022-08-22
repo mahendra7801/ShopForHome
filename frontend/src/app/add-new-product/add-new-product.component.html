@@ -1,0 +1,114 @@
+<div class="container mt-5">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col">
+                <p style="font-family: 'Times New Roman', Times, serif; font-weight: 800px;">Add New Product</p>
+                <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput placeholder="Product Name" [(ngModel)]="product.productName" name="productName">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Description</mat-label>
+                        <input matInput placeholder="Product Description" [(ngModel)]="product.productDescription"
+                            name="productDescription">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Actual Price</mat-label>
+                        <input matInput placeholder="Product Actual Price" [(ngModel)]="product.productActualPrice"
+                            name="productActualPrice">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Discounted Price</mat-label>
+                        <input matInput placeholder="Product Discounted Price"
+                            [(ngModel)]="product.productDiscountedPrice" name="productDiscountedPrice">
+
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Category</mat-label>
+                        <input matInput placeholder="Product Category" [(ngModel)]="product.productCategory"
+                            name="productCategory">
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Stock</mat-label>
+                        <input matInput placeholder="Product Stock" [(ngModel)]="product.productStock"
+                            name="productStock">
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Image File Name </mat-label>
+                        <input matInput placeholder="Product Image Link" [(ngModel)]="product.productImageLink"
+                            name="productImageLink">
+                    </mat-form-field>
+
+                    <div align="end">
+                        <button type="submit" mat-raised-button style="margin-right: 3px; background-color:rgb(0,70,102); color:white;">Add
+                            Product</button>
+                        <button type="reset" mat-stroked-button style="background-color: rgb(0,70,102);color:white;">Clear</button>
+                        <br>
+                        <br>
+                    </div>
+                </form>
+            </div>
+
+            <button mat-raised-button style="background-color: rgb(0,70,102); color:white;" (click)="getProducts()">View Products</button>
+            <div class="container pd-5 mt-5 ">
+                <table class="table table-hover w-100" border="2px solid">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Product Name
+                            </th>
+                            <th scope="col">
+                                Product Category
+                            </th>
+                            <th scope="col">
+                                Product Description
+                            </th>
+                            <th scope="col">
+                                Product Stock
+                            </th>
+
+                            <th>
+                                product Discounted Price
+                            </th>
+                            <th>
+                                Product Actual Price
+                            </th>
+                            <th>
+                                Options
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr scope="row" border="2px" *ngFor="let product of products">
+
+                            <td>{{product.productName}}</td>
+                            <td>{{product.productCategory}}</td>
+                            <td>{{product.productDescription}}</td>
+                            <td>{{product.productStock}}</td>
+                            <td>{{product.productDiscountedPrice}}</td>
+                            <td>{{product.productActualPrice}}</td>
+                            <td>
+                                <button mat-raised-button style="background-color: rgb(0,70,102); color:white;"
+                                    (click)="updateProduct(product)">Update</button>
+                                <button mat-raised-button color="warn" (click)="deleteProduct(product)">Delete</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>

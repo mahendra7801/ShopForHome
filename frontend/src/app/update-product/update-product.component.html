@@ -1,0 +1,48 @@
+<div class="col-md-6 offset-md-3">
+    <mat-card style="font-family: 'Times New Roman', Times, serif;">
+        <mat-card-header>
+            <h3 style="text-align: center;"> Update Product </h3>
+        </mat-card-header>
+        <form (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label> Product Name</label>
+                <input type="text" class="form-control" id="productName" [(ngModel)]="product.productName"
+                    name="productName">
+            </div>
+
+            <div class="form-group">
+                <label> Product Category</label>
+                <input type="text" class="form-control" id="productCategory" [(ngModel)]="product.productCategory"
+                    name="productCategory">
+            </div>
+
+            <div class="form-group">
+                <label> Product Description</label>
+                <input type="text" class="form-control" id="productDescription" [(ngModel)]="product.productDescription"
+                    name="productDescription">
+            </div>
+
+            <div class="form-group">
+                <label> Product Stock</label>
+                <input type="text" class="form-control" id="productStock" [(ngModel)]="product.productStock"
+                    name="productStock">
+            </div>
+
+            <div class="form-group">
+                <label> Product Discounted Price</label>
+                <input type="text" class="form-control" id="productDiscountedPrice"
+                    [(ngModel)]="product.productDiscountedPrice" name="productDiscountedPrice">
+            </div>
+
+            <div class="form-group">
+                <label> Product Actual Price</label>
+                <input type="text" class="form-control" id="productActualPrice" [(ngModel)]="product.productActualPrice"
+                    name="productActualPrice">
+            </div>
+            <div style="text-align: center;">
+                <button class="btn btn-success" mat-raised-button style="background-color: rgb(0,70,102);" type="submit">Update</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,99 @@
+<mat-toolbar color="md-primary" class="custom-navbar navbar navbar navbar-expand-md">
+    <div class="collapse navbar-collapse">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/user" >
+                    <i style="font-size:20px; color:rgb(0,75,102);" class="fas fa-solid fa-store" aria-hidden="true"></i>
+                    <!-- <p style="color: black; ">Shop</p> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/wishlist" >
+                    <i style="font-size:20px; color:rgb(0,75,102);" class="fa fa-heart" aria-hidden="true"></i>
+                    <!-- <p style="color: black; ">WishList</p> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/cart">
+                    <i style="font-size: 20px; color:rgb(0,75,102);" class="fas fa-cart-plus"></i>
+                    <!-- <p style="color: black;">Cart</p> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" mat-button routerLink="/orderPage">
+                    <i style="font-size: 20px; color:rgb(0,75,102);" class="fa fa-briefcase" aria-hidden="true"></i>
+                    <!-- <p style="color: black;">My Orders</p> -->
+                </a>
+            </li>
+            
+
+        </ul>
+    </div>
+</mat-toolbar>
+
+
+<ng-container *ngIf="product.length != 0">
+    <div style="text-align: center;">
+        <h1 style="font-family: 'Times New Roman', Times, serif;"><strong>Your Orders</strong></h1>
+    </div>
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let item of product; let i = index">
+
+                            <td *ngIf="item.user.userName == userName">{{i+1}}</td>
+                            <td *ngIf="item.user.userName == userName">{{item.product.productName}}</td>
+                            <td *ngIf="item.user.userName == userName"><img style="width:120px"
+                                    src="/assets/images/{{item.product.productImageLink}}"></td>
+                            <td *ngIf="item.user.userName == userName">{{item.product.productDescription}}</td>
+                            <td *ngIf="item.user.userName == userName">₹ {{item.product.productDiscountedPrice}}</td>
+                            <td *ngIf="item.user.userName == userName">
+                                {{item.quantity}}
+                            </td>
+
+                            <td *ngIf="item.user.userName == userName">₹ {{item.total}}</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="5"></td>
+
+                            <td><button mat-raised-button class="btn btn-primary" routerLink="/user" style="background-color: rgb(0,70,102);">Shop More</button>
+                            </td>
+                            <td><strong>Grand Total: </strong><strong>₹ {{grandTotal}}</strong></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="product.length == 0">
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">My Orders</h2>
+        </div>
+        <div class="center">
+            <h3>There are no Orders, order Something</h3>
+            <h4>Add items to your Bag!</h4>
+            <button routerLink="/user" mat-raised-button class="btn btn-primary" style="background-color: rgb(0,70,102);">Shop Now</button>
+        </div>
+    </div>
+</ng-container>

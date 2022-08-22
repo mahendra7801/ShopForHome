@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-card class="mb-50">
+        <div class="container pd-10 mt-50" style="background-color: rgb(6, 90, 121);">
+            <div class="text-center">
+                <h2>Upload Your .CSV File Here</h2>
+                <input class="form-control" type="file" (change)="onChange($event)">
+
+                <button (click)="onUpload()" class="btn btn-success" style="background-color: rgb(0,70,102);">
+                    Upload
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</div>

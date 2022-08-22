@@ -1,0 +1,41 @@
+<div class="container pd-5 mt-2">
+    <h2 style="font-family: 'Times New Roman', Times, serif;">List Of Users</h2>
+</div>
+<div class="container pd-5 mt-5 ">
+    <table class="table table-hover w-100" border="2px solid">
+        <thead>
+            <tr>
+                <th scope="col">
+                    First Name
+                </th>
+                <th scope="col">
+                    Last Name
+                </th>
+                <th scope="col">
+                    Email Id
+                </th>
+                <th scope="col">
+                    Phone Number
+                </th>
+                <th scope="col">
+                    Role
+                </th>
+                <th scope="col">
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" border="2px" *ngFor="let user of userDetails">
+
+                <td>{{user.userFirstName}}</td>
+                <td>{{user.userLastName}}</td>
+                <td>{{user.emailId}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.role[0].roleName}}</td>
+                <td><button class="button pd-3" mat-raised-button color="warn"
+                        (click)="deleteUser(user.userName)">Delete</button>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
